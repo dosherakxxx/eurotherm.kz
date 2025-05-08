@@ -91,10 +91,12 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Close menu when clicking a nav-link or nav-cta-button (on mobile)
+// Close menu when clicking a nav-link or nav-cta-button (on mobile only)
 document.querySelectorAll('.nav-link, .nav-cta-button').forEach(link => {
     link.addEventListener('click', () => {
-        closeMobileMenu();
+        if (window.innerWidth <= 900) {
+            closeMobileMenu();
+        }
     });
 });
 
