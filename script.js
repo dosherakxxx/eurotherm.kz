@@ -16,11 +16,17 @@ document.querySelectorAll('.animate-up').forEach((element) => {
     observer.observe(element);
 });
 
-// Smooth scroll for all interactive elements
-document.querySelectorAll('.nav-link, .cta-button, .detail-button, .more-btn, .nav-cta-button').forEach(link => {
+// Smooth scroll for nav-link only (not all buttons)
+document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+        const href = this.getAttribute('href');
+        if (href && href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
     });
 });
 
@@ -28,62 +34,77 @@ document.querySelectorAll('.nav-link, .cta-button, .detail-button, .more-btn, .n
 const sections = document.querySelectorAll('section[id]');
 window.addEventListener('scroll', () => {
     const scrollY = window.pageYOffset;
-    
     sections.forEach(section => {
         const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
+        const sectionTop = section.offsetTop - 120;
         const sectionId = section.getAttribute('id');
-        
-        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.add('active');
-        } else {
-            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.remove('active');
+        const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+        if (navLink) {
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                navLink.classList.add('active');
+            } else {
+                navLink.classList.remove('active');
+            }
         }
     });
 });
 
-// Mobile menu functionality
+// Mobile menu functionality with animation and body scroll lock
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
 const navItems = document.querySelectorAll('.nav-links li');
 
+function closeMobileMenu() {
+    mobileMenuBtn.classList.remove('active');
+    navLinks.classList.remove('active');
+    document.body.classList.remove('menu-open');
+    navItems.forEach((item) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateX(40px)';
+    });
+}
+
 mobileMenuBtn.addEventListener('click', () => {
     mobileMenuBtn.classList.toggle('active');
     navLinks.classList.toggle('active');
-
-    navItems.forEach((item, index) => {
-        if (item.style.animation) {
-            item.style.animation = '';
-        } else {
-            item.style.animation = `navItemFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-        }
-    });
-
-    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+    if (navLinks.classList.contains('active')) {
+        document.body.classList.add('menu-open');
+        navItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateX(0)';
+            }, 100 + index * 60);
+        });
+    } else {
+        closeMobileMenu();
+    }
 });
 
 // Close menu when clicking outside
 document.addEventListener('click', (e) => {
-    if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target) && navLinks.classList.contains('active')) {
-        mobileMenuBtn.classList.remove('active');
-        navLinks.classList.remove('active');
-        document.body.style.overflow = '';
+    if (
+        !navLinks.contains(e.target) &&
+        !mobileMenuBtn.contains(e.target) &&
+        navLinks.classList.contains('active')
+    ) {
+        closeMobileMenu();
     }
 });
 
-// Close menu when clicking a link
-document.querySelectorAll('.nav-link').forEach(link => {
+// Close menu when clicking a nav-link or nav-cta-button (on mobile)
+document.querySelectorAll('.nav-link, .nav-cta-button').forEach(link => {
     link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        mobileMenuBtn.classList.remove('active');
-        document.body.style.overflow = '';
+        closeMobileMenu();
     });
 });
 
-// Telegram bot integration
-const TOKEN = '7673379870:AAETekzDpO7UldDW8VcXTSGlu9xJqSg6e8g';
-const CHAT_ID = '7520366041';
-const API_URL = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+// EmailJS integration
+// 1. Вставьте в <head> вашего HTML: 
+// <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+// 2. Получите userID, serviceID, templateID на emailjs.com
+// 3. Вставьте их ниже вместо YOUR_USER_ID, YOUR_SERVICE_ID, YOUR_TEMPLATE_ID
+
+emailjs.init('YOUR_USER_ID'); // <-- вставьте свой userID
 
 document.getElementById('requestForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -102,30 +123,22 @@ document.getElementById('requestForm').addEventListener('submit', function(e) {
     
     phoneError.style.display = 'none';
 
-    const text = `
-📥 Новая заявка:
-👤 Имя: ${name}
-📞 Телефон: ${phone}
-📧 Email: ${email}
-💬 Сообщение: ${message || 'Нет'}
-`;
+    // Параметры для шаблона EmailJS
+    const templateParams = {
+        user_name: name,
+        user_phone: phone,
+        user_email: email,
+        user_message: message || 'Нет'
+    };
 
-    fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            chat_id: CHAT_ID,
-            text: text
-        })
-    })
-    .then(res => res.ok ? res.json() : Promise.reject(res))
-    .then(data => {
-        document.getElementById('confirmationMessage').style.display = 'block';
-        document.getElementById('requestForm').reset();
-        document.getElementById('userPhone').value = '+7';
-    })
-    .catch(err => {
-        alert('Ошибка отправки. Проверьте настройки бота.');
-        console.error('Telegram error:', err);
-    });
+    // Вставьте свои serviceID и templateID
+    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+        .then(function(response) {
+            document.getElementById('confirmationMessage').style.display = 'block';
+            document.getElementById('requestForm').reset();
+            document.getElementById('userPhone').value = '+7';
+        }, function(error) {
+            alert('Ошибка отправки. Проверьте настройки EmailJS.');
+            console.error('EmailJS error:', error);
+        });
 });
