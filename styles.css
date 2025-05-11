@@ -1450,3 +1450,30 @@ body.menu-open {
     gap: 2rem;
 }
 
+.bytenest-link {
+    display: inline-block;
+    color: var(--accent-color);
+    text-decoration: none;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.bytenest-link:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+    color: white;
+}
+
+.bytenest-link i {
+    font-size: 0.8em;
+    margin-left: 4px;
+    transition: transform 0.3s ease;
+}
+
+.bytenest-link:hover i {
+    transform: translateX(2px);
+}
+
