@@ -324,17 +324,34 @@
 
     <section id="contact" class="contact">
         <h2>Свяжитесь с нами</h2>
-        <div class="contact-container">
-            <form id="requestForm">
-                <input type="text" id="userName" placeholder="Ваше имя" required>
-                <input type="tel" id="userPhone" placeholder="Номер телефона" required>
-                <input type="email" id="userEmail" placeholder="Email" required>
-                <textarea id="userMessage" placeholder="Сообщение"></textarea>
-                <span id="phoneError" style="display: none; color: red;">Введите корректный номер телефона в формате
-                    +7XXXXXXXXXX</span>
-                <div id="confirmationMessage" style="display: none; color: green;">Ваша заявка успешно отправлена!</div>
-                <button type="submit">Отправить</button>
-            </form>
+        <div class="contact-wrapper">
+            <div class="contact-container">
+                <form id="requestForm">
+                    <input type="text" id="userName" placeholder="Ваше имя" required>
+                    <input type="tel" id="userPhone" placeholder="Номер телефона" required>
+                    <input type="email" id="userEmail" placeholder="Email" required>
+                    <textarea id="userMessage" placeholder="Сообщение"></textarea>
+                    <span id="phoneError" style="display: none; color: red;">Введите корректный номер телефона в формате +7XXXXXXXXXX</span>
+                    <div id="confirmationMessage" style="display: none; color: green;">Ваша заявка успешно отправлена!</div>
+                    <button type="submit">Отправить</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-phone"></i> Телефон: <a href="tel:+77020750401">+7 702 075 04 01</a></p>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/77019242442">+7 701 924 24 42</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@eurotherm.kz">info@eurotherm.kz</a> (общие вопросы)</p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:sales@eurotherm.kz">sales@eurotherm.kz</a> (отдел продаж)</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Адрес офиса</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> г. Астана, ул. Иманбаевой, 8к2, <br>6 этаж, офис №1</p>
+                </div>
+            </div>
         </div>
     </section>
 
