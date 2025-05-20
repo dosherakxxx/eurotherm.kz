@@ -457,7 +457,7 @@ nav {
     }
     .tech-info h3 {
         font-size: 1.13rem;
-        margin-bottom: 1.1rem;
+        margin-bottom: 1rem;
         text-align: left;
     }
     .tech-features {
@@ -538,6 +538,12 @@ nav {
 .service-card i {
     font-size: 2.5rem;
     color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.service-icon {
+    height: 40px;
+    width: auto;
     margin-bottom: 1rem;
 }
 
@@ -865,16 +871,40 @@ footer {
 .tech-features {
     list-style: none;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 2rem;
+    max-width: 400px; /* увеличили с 180px до 400px */
+    margin-left: 0; /* выравнивание по левому краю */
 }
 
 .tech-features li {
-    margin: 1rem 0;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     display: flex;
-    align-items: center;
-    gap: 1rem;
+    align-items: flex-start; /* выравнивание по верху для точного позиционирования */
+    gap: 0.8rem; /* уменьшили отступ между иконкой и текстом */
+    margin-bottom: 5px;
+    width: 130%; /* растягиваем на всю ширину */
 }
 
 .tech-features i {
+    color: var(--primary-color);
+    font-size: 0.9em; /* уменьшили размер */
+    margin-top: px; /* выравнивание по центру текста */
+}
+
+.tech-features i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.tech-features h4 {
+    margin-bottom: 0.5rem;
     color: var(--primary-color);
 }
 
@@ -1241,6 +1271,12 @@ footer {
 .comfort-card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+}
+
+.comfort-icon {
+    height: 40px;
+    width: auto;
+    margin-bottom: 1.5rem;
 }
 
 /* Mobile Menu Button */
@@ -1612,37 +1648,7 @@ body.menu-open {
 }
 
 .info-blocks {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 4rem auto 0;
-    padding: 0 2rem;
-}
-
-.info-block {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-}
-
-.info-block h4 {
-    color: var(--primary-color);
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-}
-
-.info-block p {
-    color: #2c3e50;
-    line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-    .info-blocks {
-        grid-template-columns: 1fr;
-        padding: 0 1rem;
-    }
+    display: none;
 }
 
 .design-features .feature i.fa-toolbox {
