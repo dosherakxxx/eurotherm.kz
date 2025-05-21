@@ -75,8 +75,8 @@ nav {
     height: 100px;
     width: auto;
     vertical-align: middle;
-    margin-left: 10px;
-    margin-bottom: 0px;
+    margin-left: 320px;
+    margin-bottom: -30px;
 }
 
 .tech-logo-inline {
@@ -423,8 +423,8 @@ nav {
     }
     .tech-logo-inline {
         height: 35px !important;
-        margin-left: 80px !important;
-        margin-bottom: -4px !important;
+        margin-left: 0px !important;
+        margin-bottom: 250px !important;
         max-width: 1200px;
     }
     .tech-container {
