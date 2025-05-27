@@ -144,3 +144,45 @@ document.getElementById('requestForm').addEventListener('submit', function(e) {
             console.error('EmailJS error:', error);
         });
 });
+
+// Image Viewer functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const viewer = document.querySelector('.image-viewer');
+    const viewerImg = viewer.querySelector('img');
+    const closeBtn = viewer.querySelector('.close-viewer');
+    
+    // Add click handlers to all images in galleries and air-ducts
+    const galleryImages = document.querySelectorAll('.gallery-item img, .tech-photo-grid img, .gallery-image');
+    
+    galleryImages.forEach(img => {
+        if (img.classList.contains('ducts-logo')) return; // Пропускаем лого
+        
+        img.addEventListener('click', function() {
+            viewerImg.src = this.src;
+            viewer.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    
+    // Close on clicking X button
+    closeBtn.addEventListener('click', function() {
+        viewer.style.display = 'none';
+        document.body.style.overflow = '';
+    });
+    
+    // Close on clicking outside image
+    viewer.addEventListener('click', function(e) {
+        if (e.target === viewer) {
+            viewer.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && viewer.style.display === 'flex') {
+            viewer.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    });
+});
