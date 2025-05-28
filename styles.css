@@ -1837,167 +1837,19 @@ footer {
 .gallery-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.05);
-}
-
-.light-integration {
-    grid-column: span 2;
-}
-
-.light-badge {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    background: rgba(0,0,0,0.7);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.design-detail-thin {
-    padding: 0.2rem 1.2rem;
-    font-size: 20px;
-    border-radius: 18px;
-    min-width: unset;
-    max-width: unset;
-    font-weight: 100;
-}
-
-.quality-focus {
-    padding: 5rem 2rem;
-    background: var(--light-bg);
-}
-
-.quality-focus h3 {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.quality-container {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.quality-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-    justify-items: center;
-    text-align: center;
-}
-
-.quality-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.quality-card:hover {
-    transform: translateY(-5px);
-}
-
-.comfort-features {
-    padding: 6rem 2rem;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: white;
-}
-
-.comfort-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.comfort-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 2rem;
-    border-radius: 15px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.comfort-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.comfort-card i {
-    font-size: 2.5rem;
-    color: var(--accent-color);
-    margin-bottom: 1.5rem;
-}
-
-.comfort-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.comfort-icon {
-    height: 40px;
-    width: auto;
-    margin-bottom: 1.5rem;
-}
-
-/* Mobile Menu Button */
-.mobile-menu-btn {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-.mobile-menu-btn span {
-    width: 100%;
-    height: 3px;
-    background: var(--primary-color);
-    transition: all 0.3s ease;
-}
-
-/* Mobile Menu Styles */
-.mobile-menu-btn {
-    display: none;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-.mobile-menu-btn span {
+    object-fit: contain; /* показываем всю картинку */
     display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    background-color: var(--primary-color);
-    transition: all 0.3s ease-in-out;
+    border-radius: 0; /* убрано скругление */
+    background: #eee;
 }
 
-/* Hamburger Animation */
-.mobile-menu-btn.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.mobile-menu-btn.active span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-
-.mobile-menu-btn.active span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+@media (max-width: 900px) {
+    .gallery-row:first-child .gallery-item {
+        height: 140px;
+    }
+    .gallery-row:last-child .gallery-item {
+        height: 180px;
+    }
 }
 
 /* --- MOBILE NAVIGATION --- */
@@ -2498,31 +2350,31 @@ body.menu-open {
 .design-gallery-grid {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 18px;
     width: 100%;
 }
 
 .gallery-row {
     display: flex;
     flex-direction: row;
-    gap: 12px;
+    gap: 18px;
     width: 100%;
 }
 
 .gallery-row:first-child .gallery-item {
     flex: 1 1 0;
-    height: 120px;
+    height: 220px;
     min-width: 0;
 }
 
 .gallery-row:last-child .gallery-item {
     width: 100%;
-    height: 140px;
+    height: 260px;
 }
 
 .gallery-item {
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 0; /* убрано скругление */
     background: #eee;
     display: flex;
     align-items: stretch;
@@ -2533,18 +2385,18 @@ body.menu-open {
 .gallery-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* показываем всю картинку */
     display: block;
-    border-radius: 10px;
+    border-radius: 0; /* убрано скругление */
     background: #eee;
 }
 
 @media (max-width: 900px) {
     .gallery-row:first-child .gallery-item {
-        height: 80px;
+        height: 140px;
     }
     .gallery-row:last-child .gallery-item {
-        height: 100px;
+        height: 180px;
     }
 }
 
