@@ -919,14 +919,15 @@ nav {
         font-size: 1.15rem;
     }
     .services-buttons {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0;
-        max-width: 100vw;
-        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
         padding: 0;
-        position: static;
+        position: relative;
+        z-index: 2;
+        margin-top: -1rem;
     }
     .services-buttons .detail-button:not(:first-child) {
         display: none !important;
@@ -946,9 +947,26 @@ nav {
         pointer-events: auto;
         display: block;
     }
-    .services {
-        position: relative;
-        padding-bottom: 3.5rem;
+    .detail-button {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 0.4rem 2rem;
+        font-size: 0.9rem;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        font-weight: 600;
+        width: fit-content;
+        margin: 0 auto;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        letter-spacing: 0.8px;
+    }
+
+    .detail-button:hover {
+        background: var(--secondary-color);
+        transform: translateY(-2px);
     }
 
     /* Остальные секции: как на телефоне, только шире */
@@ -1111,6 +1129,236 @@ nav {
     }
 }
 
+/* --- COMFORT FEATURES --- */
+.comfort-features {
+    padding: 4rem 0 4rem 0;
+    background: linear-gradient(120deg, #17989e 0%, #1a8b97 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.comfort-features h2 {
+    text-align: center;
+    width: 100%;
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    z-index: 2;
+    position: relative;
+}
+
+.comfort-grid {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    z-index: 2;
+    position: relative;
+}
+
+/* Исправление: ограничить размер и прозрачность svg/фоновых картинок внутри блока */
+.comfort-features img.comfort-icon {
+    max-width: 80px;
+    max-height: 80px;
+    margin-bottom: 1.2rem;
+    opacity: 1;
+    filter: none;
+    z-index: 2;
+    position: relative;
+    pointer-events: none;
+}
+
+.comfort-card {
+    background: rgba(255,255,255,0.10);
+    border-radius: 18px;
+    box-shadow: none;
+    padding: 2.2rem 1.2rem 2.2rem 1.2rem;
+    min-width: 240px;
+    max-width: 320px;
+    flex: 1 1 240px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border: none;
+    backdrop-filter: blur(2px);
+    z-index: 2;
+    position: relative;
+}
+
+.comfort-card i {
+    font-size: 2.5rem;
+    color: #b5e0d3;
+    margin-bottom: 1.2rem;
+    display: block;
+    z-index: 2;
+    position: relative;
+}
+
+.comfort-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.1rem;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    z-index: 2;
+    position: relative;
+}
+
+.comfort-card p {
+    font-size: 1.08rem;
+    color: #e6f7f7;
+    margin-bottom: 0;
+    font-weight: 400;
+    z-index: 2;
+    position: relative;
+}
+
+.comfort-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    background: rgba(255,255,255,0.17);
+    box-shadow: 0 8px 32px rgba(10,147,150,0.13);
+}
+
+@media (max-width: 1100px) {
+    .comfort-grid {
+        gap: 1.2rem;
+    }
+    .comfort-card {
+        min-width: 180px;
+        max-width: 100%;
+        padding: 1.5rem 0.7rem;
+    }
+    .comfort-features img.comfort-icon {
+        max-width: 60px;
+        max-height: 60px;
+    }
+}
+
+@media (max-width: 700px) {
+    .comfort-features {
+        padding: 2.2rem 0.2rem;
+    }
+    .comfort-features h2 {
+        font-size: 1.2rem;
+        margin-bottom: 1.2rem;
+    }
+    .comfort-grid {
+        flex-direction: column;
+        gap: 1.1rem;
+        align-items: stretch;
+    }
+    .comfort-card {
+        min-width: 0;
+        max-width: 100%;
+        padding: 1.1rem 0.5rem;
+    }
+    .comfort-card h3 {
+        font-size: 1rem;
+    }
+    .comfort-card p {
+        font-size: 0.95rem;
+    }
+    .comfort-features img.comfort-icon {
+        max-width: 48px;
+        max-height: 48px;
+    }
+}
+
+/* --- QUALITY FOCUS --- */
+.quality-focus {
+    padding: 3.5rem 2rem 2.5rem 2rem;
+    background: #fff;
+}
+
+.quality-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.quality-container h3 {
+    font-size: 1.7rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.quality-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 0;
+}
+
+.quality-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    padding: 2rem 1.5rem;
+    min-width: 260px;
+    max-width: 340px;
+    flex: 1 1 260px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quality-card i {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.quality-card h4 {
+    font-size: 1.15rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+}
+
+.quality-card p {
+    font-size: 1.02rem;
+    color: #222;
+    margin-bottom: 0;
+}
+
+.quality-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.13);
+    background: #f6fcfa;
+}
+
+@media (max-width: 900px) {
+    .quality-focus {
+        padding: 2rem 0.5rem 1.5rem 0.5rem;
+    }
+    .quality-cards {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+    .quality-card {
+        max-width: 100%;
+        padding: 1.2rem 0.7rem;
+    }
+    .quality-container h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* --- SERVICES SECTION --- */
 .services {
     padding: 5rem 2rem;
     background: linear-gradient(135deg, var(--light-bg) 0%, #ffffff 100%);
@@ -1845,10 +2093,32 @@ footer {
 
 @media (max-width: 900px) {
     .gallery-row:first-child .gallery-item {
-        height: 140px;
+        height: 260px;
     }
     .gallery-row:last-child .gallery-item {
-        height: 180px;
+        flex: 1 1 0;
+        height: 360px; /* нижняя картинка больше */
+        min-width: 0;
+    }
+
+    .gallery-item {
+        overflow: hidden;
+        border-radius: 0;
+        background: transparent;
+        display: flex;
+        align-items: stretch;
+        justify-content: stretch;
+        box-shadow: none;
+        border: none;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 0;
+        background: transparent;
     }
 }
 
@@ -2361,42 +2631,5 @@ body.menu-open {
     width: 100%;
 }
 
-.gallery-row:first-child .gallery-item {
-    flex: 1 1 0;
-    height: 220px;
-    min-width: 0;
-}
 
-.gallery-row:last-child .gallery-item {
-    width: 100%;
-    height: 260px;
-}
-
-.gallery-item {
-    overflow: hidden;
-    border-radius: 0; /* убрано скругление */
-    background: #eee;
-    display: flex;
-    align-items: stretch;
-    justify-content: stretch;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* показываем всю картинку */
-    display: block;
-    border-radius: 0; /* убрано скругление */
-    background: #eee;
-}
-
-@media (max-width: 900px) {
-    .gallery-row:first-child .gallery-item {
-        height: 140px;
-    }
-    .gallery-row:last-child .gallery-item {
-        height: 180px;
-    }
-}
 
