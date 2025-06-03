@@ -1,3 +1,76 @@
+// --- Слайдер для "Умная вентиляция" только для мобильной версии ---
+document.addEventListener('DOMContentLoaded', function() {
+    var slider = document.querySelector('.tech-photo-slider-mobile');
+    if (!slider) return;
+    var images = slider.querySelectorAll('.slider-image');
+    var dots = slider.querySelectorAll('.slider-dot');
+    var prevBtn = slider.querySelector('.slider-prev');
+    var nextBtn = slider.querySelector('.slider-next');
+    var current = 0;
+
+    function showSlide(idx) {
+        images.forEach(function(img, i) {
+            img.classList.toggle('active', i === idx);
+            img.style.display = i === idx ? 'block' : 'none';
+        });
+        dots.forEach(function(dot, i) {
+            dot.classList.toggle('active', i === idx);
+        });
+        current = idx;
+    }
+
+    prevBtn.addEventListener('click', function() {
+        var idx = (current - 1 + images.length) % images.length;
+        showSlide(idx);
+    });
+    nextBtn.addEventListener('click', function() {
+        var idx = (current + 1) % images.length;
+        showSlide(idx);
+    });
+    dots.forEach(function(dot, i) {
+        dot.addEventListener('click', function() {
+            showSlide(i);
+        });
+    });
+    showSlide(0);
+});
+// --- Слайдер для "Центральное пылеудаление" только для мобильной версии ---
+document.addEventListener('DOMContentLoaded', function() {
+    var slider = document.querySelector('.vacuum-photo-slider-mobile');
+    if (!slider) return;
+    var images = slider.querySelectorAll('.slider-image');
+    var dots = slider.querySelectorAll('.slider-dot');
+    var prevBtn = slider.querySelector('.slider-prev');
+    var nextBtn = slider.querySelector('.slider-next');
+    var current = 0;
+
+    function showSlide(idx) {
+        images.forEach(function(img, i) {
+            img.classList.toggle('active', i === idx);
+            img.style.display = i === idx ? 'block' : 'none';
+        });
+        dots.forEach(function(dot, i) {
+            dot.classList.toggle('active', i === idx);
+        });
+        current = idx;
+    }
+
+    prevBtn.addEventListener('click', function() {
+        var idx = (current - 1 + images.length) % images.length;
+        showSlide(idx);
+    });
+    nextBtn.addEventListener('click', function() {
+        var idx = (current + 1) % images.length;
+        showSlide(idx);
+    });
+    dots.forEach(function(dot, i) {
+        dot.addEventListener('click', function() {
+            showSlide(i);
+        });
+    });
+    showSlide(0);
+});
+
 // Add logo click handler
 document.querySelector('.logo').addEventListener('click', (e) => {
     e.preventDefault();
@@ -150,26 +223,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const viewer = document.querySelector('.image-viewer');
     const viewerImg = viewer.querySelector('img');
     const closeBtn = viewer.querySelector('.close-viewer');
-    
+
     // Add click handlers to all images in galleries and air-ducts
     const galleryImages = document.querySelectorAll('.gallery-item img, .tech-photo-grid img, .gallery-image');
-    
+
     galleryImages.forEach(img => {
         if (img.classList.contains('ducts-logo')) return; // Пропускаем лого
-        
+
         img.addEventListener('click', function() {
             viewerImg.src = this.src;
             viewer.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         });
     });
-    
+
+    // --- Добавить обработчик для слайдеров на мобильных (умная вентиляция и пылеудаление) ---
+    document.querySelectorAll('.tech-photo-slider-mobile .slider-image, .vacuum-photo-slider-mobile .slider-image').forEach(img => {
+        img.addEventListener('click', function() {
+            viewerImg.src = this.src;
+            viewer.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
     // Close on clicking X button
     closeBtn.addEventListener('click', function() {
         viewer.style.display = 'none';
         document.body.style.overflow = '';
     });
-    
+
     // Close on clicking outside image
     viewer.addEventListener('click', function(e) {
         if (e.target === viewer) {
@@ -177,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = '';
         }
     });
-    
+
     // Close on Escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && viewer.style.display === 'flex') {

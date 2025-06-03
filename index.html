@@ -168,28 +168,36 @@
             </div>
         </div>
     </section>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
     <section id="technology" class="technology">
-        <div style="max-width:1240px; margin:-240px auto; padding-left:650px;">
-            <img src="img/intelengyventswegon/swegon_casa_logo_50652314142_o.png" alt="Swegon Casa Logo" class="tech-logo-inline" style="height:44px; margin-bottom:0px; display:block;">
+    <div class="swegon-logo-mobile-fix" style="max-width:1240px; margin:0 auto; padding-left:0;">
+        <img src="img/intelengyventswegon/swegon_casa_logo_50652314142_o.png" alt="Swegon Casa Logo" class="tech-logo-inline" style="height:44px; margin-bottom:0px; display:block;">
+    </div>
+    <h2 style="max-width:1200px; margin:0 auto; text-align:left; padding-left:0;">
+        Умная вентиляция Swegon-Casa
+    </h2>
+    <!-- Слайдер только для мобильной версии (перемещён под заголовок) -->
+    <div class="tech-photo-slider-mobile">
+        <div class="slider-wrapper">
+            <img src="img/intelengyventswegon/kitchencasa.jpg" alt="Главное фото" class="slider-image" style="display:block;">
+            <img src="img/intelengyventswegon/genius-uutinen.png" alt="Маленькое фото 2" class="slider-image" style="display:none;">
+            <img src="img/intelengyventswegon/genius-fireplace.png" alt="Маленькое фото 3" class="slider-image" style="display:none;">
+            <img src="img/icon/base.jpg" alt="base" class="slider-image" style="display:none;">
         </div>
-        <h2 style="max-width:1200px; margin:0 auto; text-align:left; padding-left:0;">
-            Умная вентиляция Swegon-Casa
-        </h2>
-        <div class="tech-container">
-                <!-- Блок с информацией теперь идет первым -->
+        <div class="slider-controls">
+            <button class="slider-prev" aria-label="Предыдущее фото">&#8592;</button>
+            <span class="slider-indicators">
+                <span class="slider-dot active"></span>
+                <span class="slider-dot"></span>
+                <span class="slider-dot"></span>
+                <span class="slider-dot"></span>
+            </span>
+            <button class="slider-next" aria-label="Следующее фото">&#8594;</button>
+        </div>
+    </div>
+    <div class="tech-container">
+            <!-- Блок с информацией теперь идет первым -->
             <div class="tech-info">
                 <h3>Как это работает?</h3>
                 <div class="design-features">
@@ -211,22 +219,19 @@
                     </div>
                 </div>
             </div>
-            <!-- Блок с фотографиями теперь идет вторым -->
-            <div class="tech-photo-grid" style="position:relative;">
-                <div class="tech-photo-large">
-                    <img src="img/intelengyventswegon/kitchencasa.jpg" alt="Главное фото" ">
-                </div>
-                <!-- base.jpg только для компьютера -->
-                <img src="img/icon/base.jpg" alt="base" class="base-center-desktop" style="position:absolute; right:13.2%; top:50%; transform:translate(-50%,-50%); max-width:208px; max-height:251px; z-index:2; display:block;">
-                <div class="tech-photo-right">
-                    <div class="tech-photo-small-row">
-                        <img src="img/intelengyventswegon/genius-uutinen.png" alt="Маленькое фото 2"  >
+            <!-- Удалите/переместите старый блок .tech-photo-slider-mobile отсюда -->
+            <!-- Блок с фотографиями для десктопа -->
+            <div class="tech-photo-grid" style="position:relative; display: flex; flex-direction: column; gap: 0; align-items: flex-start; max-width: 900px; margin: 0 auto 2rem auto;">
+                <img src="img/intelengyventswegon/kitchencasa.jpg" alt="Главное фото" style="width: 100%; height: 320px; object-fit: cover; border-radius: 0; box-shadow: none; margin-bottom: 0;">
+                <div style="display: flex; width: 100%; gap: 0; align-items: stretch; margin-top: 0;">
+                    <div style="width: 50%; height: 340px; display: flex; align-items: stretch;">
+                        <img src="img/icon/base.jpg" alt="base" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0; box-shadow: none; margin: 0; padding: 0;">
                     </div>
-                    <div class="tech-photo-small-row">
-                        <img src="img/intelengyventswegon/genius-fireplace.png" alt="Маленькое фото 3">
+                    <div style="width: 50%; height: 340px; display: flex; flex-direction: column; gap: 0; align-items: stretch; justify-content: stretch;">
+                        <img src="img/intelengyventswegon/genius-uutinen.png" alt="Маленькое фото 2" style="width: 100%; height: 50%; object-fit: cover; border-radius: 0; box-shadow: none; margin: 0;">
+                        <img src="img/intelengyventswegon/genius-fireplace.png" alt="Маленькое фото 3" style="width: 100%; height: 50%; object-fit: cover; border-radius: 0; box-shadow: none; margin: 0;">
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="info-blocks">
@@ -339,6 +344,24 @@
                 </div>
                 <button class="detail-button design-detail-thin" style="display:block; margin:2rem auto 0; font-size: 17px; font-weight: 550;" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Подробнее</button>
             </div>
+            <!-- Слайдер для мобильной версии центрального пылеудаления -->
+            <div class="vacuum-photo-slider-mobile" style="margin-top:25px;">
+                <div class="slider-wrapper">
+                    <img src="img/centrpili/Blizzard White book_04.jpg" alt="Центральный пылесос в интерьере" class="slider-image" style="display:block;">
+                    <img src="img/centrpili/Blizzard White book_041.jpg" alt="Трубы центрального пылеудаления" class="slider-image" style="display:none;">
+                    <img src="img/centrpili/Blizzard White book_021.jpg" alt="Пылеудаление в действии" class="slider-image" style="display:none;">
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-prev" aria-label="Предыдущее фото">&#8592;</button>
+                    <span class="slider-indicators">
+                        <span class="slider-dot active"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                    </span>
+                    <button class="slider-next" aria-label="Следующее фото">&#8594;</button>
+                </div>
+            </div>
+            <!-- Оставьте .vacuum-gallery-grid для десктопа без изменений -->
             <div class="vacuum-gallery-grid">
                 <div class="vacuum-gallery-left">
                     <div class="gallery-item">
@@ -421,7 +444,8 @@
             <div class="contact-info">
                 <div class="contact-item">
                     <h3>Контакты</h3>
-                    <p><i class="fas fa-phone"></i> Телефон: <a href="tel:+77020750401">+7 702 075 04 01</a></p>
+                    <p><i class="fas fa-phone"></i> Отдел продаж: <a href="tel:+77750073613">+7 775 007 36 13</a>, <a href="tel:+77750073615">+7 775 007 36 15</a></p>
+                    <p><i class="fas fa-phone"></i> Инженерный отдел: <a href="tel:+77750073612">+7 775 007 36 12</a></p>
                     <p><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/77019242442">+7 701 924 24 42</a></p>
                 </div>
                 <div class="contact-item">
@@ -439,7 +463,7 @@
 
     <section class="map-section">
         <div class="map-container">
-            <iframe src="https://yandex.ru/map-widget/v1/?lang=en_FR&scroll=true&source=constructor-api&um=constructor%3Aaaaceb10c958aa517c3ff4c69bf9cdbd551f957b18279cdce4a42554eafd3ae4" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+            <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aaaaceb10c958aa517c3ff4c69bf9cdbd551f957b18279cdce4a42554eafd3ae4&amp;width=879&amp;height=476&amp;lang=en_FR&amp;scroll=true"></script>
         </div>
     </section>
 
