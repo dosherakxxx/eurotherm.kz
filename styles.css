@@ -59,6 +59,8 @@
     width: 100%;
     position: relative;
     z-index: 3;
+    /* Центрируем стрелки и точки */
+    min-height: 38px;
   }
   .vacuum-photo-slider-mobile .slider-prev,
   .vacuum-photo-slider-mobile .slider-next {
@@ -74,15 +76,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  .vacuum-photo-slider-mobile .slider-prev:hover,
-  .vacuum-photo-slider-mobile .slider-next:hover {
-    background: var(--secondary-color);
+    /* Выравнивание по центру */
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
   .vacuum-photo-slider-mobile .slider-indicators {
     display: flex;
     gap: 0.5rem;
     align-items: center;
+    justify-content: center;
+    min-width: 60px;
   }
   .vacuum-photo-slider-mobile .slider-dot {
     width: 10px;
@@ -161,6 +166,8 @@
     width: 100%;
     position: relative;
     z-index: 3;
+    /* Центрируем стрелки и точки */
+    min-height: 38px;
   }
   .tech-photo-slider-mobile .slider-prev,
   .tech-photo-slider-mobile .slider-next {
@@ -176,15 +183,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  .tech-photo-slider-mobile .slider-prev:hover,
-  .tech-photo-slider-mobile .slider-next:hover {
-    background: var(--secondary-color);
+    /* Выравнивание по центру */
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
   .tech-photo-slider-mobile .slider-indicators {
     display: flex;
     gap: 0.5rem;
     align-items: center;
+    justify-content: center;
+    min-width: 60px;
   }
   .tech-photo-slider-mobile .slider-dot {
     width: 10px;
@@ -842,16 +852,6 @@ nav {
         transition: opacity 0.3s, transform 0.3s;
     }
     .nav-links.active li {
-        opacity: 1;
-        transform: translateX(0);
-        transition-delay: 0.2s;
-    }
-    .nav-links li a,
-    .nav-cta-button {
-        font-size: 1.3rem;
-        color: var(--dark-color);
-        padding: 0.8rem 0;
-        width: 100%;
         display: block;
         text-align: left;
         background: none;
