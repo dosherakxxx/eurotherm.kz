@@ -2138,7 +2138,7 @@ footer {
 
 .ducts-image .ducts-logo {
     position: absolute;
-    top: -20px;
+    top: 10px;
     left: 0;
     height: 40px;
     width: auto;
@@ -2511,7 +2511,7 @@ footer {
         width: 100%;
         height: 100%;
         object-fit: cover;
-                             border-radius: 12px;
+                                    border-radius: 12px;
     }
     
     /* Показываем логотипы в мобильной версии */
@@ -2923,6 +2923,52 @@ body.menu-open {
   .tech-photo-slider-mobile .slider-image:nth-child(2) {
     object-position: 30% center !important;
   }
+}
+
+/* --- Позиционирование для air-ducts на больших экранах --- */
+@media (min-width: 1000px) {
+  .air-ducts .top-row {
+    position: relative;
+  }
+  .air-ducts .top-row img {
+    position: relative;
+    top: 32px;
+  }
+  .tech-photo-grid {
+    position: relative;
+  }
+  .tech-photo-grid img {
+    position: relative;
+    top: 80px;
+  }
+  #design .design-gallery {
+    position: relative;
+    top: 108px;
+  }
+  #design .section-logo {
+    position: relative;
+    top: 108px;
+  }
+}
+
+/* --- CONTACT SECTION: Custom styles for clickable phone, email, and WhatsApp --- */
+.contact-info a[href^="tel:"],
+.contact-info a[href^="mailto:"],
+.contact-info a[href^="https://wa.me"] {
+    color: #0a9396;
+    font-family: 'Segoe UI', 'Inter', 'Arial', sans-serif;
+    font-weight: 500;
+    text-decoration: underline;
+    transition: color 0.2s;
+    font-size: 1.08em;
+    letter-spacing: 0.01em;
+}
+
+.contact-info a[href^="tel:"]:hover,
+.contact-info a[href^="mailto:"]:hover,
+.contact-info a[href^="https://wa.me"]:hover {
+    color: #005f73;
+    text-decoration: underline;
 }
 
 
