@@ -173,49 +173,54 @@ document.querySelectorAll('.nav-link, .nav-cta-button').forEach(link => {
     });
 });
 
-// EmailJS integration
-// 1. Вставьте в <head> вашего HTML: 
-// <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-// 2. Получите userID, serviceID, templateID на emailjs.com
-// 3. Вставьте их ниже вместо YOUR_USER_ID, YOUR_SERVICE_ID, YOUR_TEMPLATE_ID
+// --- Обработка формы обратной связи через PHP (fetch) ---
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById("requestForm");
+    if (!form) return;
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
 
-emailjs.init('YOUR_USER_ID'); // <-- вставьте свой userID
+        const name = document.getElementById("userName").value.trim();
+        const phone = document.getElementById("userPhone").value.trim();
+        const email = document.getElementById("userEmail").value.trim();
+        const message = document.getElementById("userMessage").value.trim();
+        const phoneError = document.getElementById("phoneError");
+        const confirmationMessage = document.getElementById("confirmationMessage");
 
-document.getElementById('requestForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+        // Простейшая валидация телефона
+        if (!/^(\+7\d{10})$/.test(phone)) {
+            phoneError.style.display = "block";
+            return;
+        } else {
+            phoneError.style.display = "none";
+        }
 
-    const name = document.getElementById('userName').value.trim();
-    const phone = document.getElementById('userPhone').value.trim();
-    const email = document.getElementById('userEmail').value.trim();
-    const message = document.getElementById('userMessage').value.trim();
-    const phonePattern = /^\+7\d{10}$/;
-    const phoneError = document.getElementById('phoneError');
-    
-    if (!phonePattern.test(phone)) {
-        phoneError.style.display = 'block';
-        return;
-    }
-    
-    phoneError.style.display = 'none';
-
-    // Параметры для шаблона EmailJS
-    const templateParams = {
-        user_name: name,
-        user_phone: phone,
-        user_email: email,
-        user_message: message || 'Нет'
-    };
-
-    // Вставьте свои serviceID и templateID
-    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-        .then(function(response) {
-            document.getElementById('confirmationMessage').style.display = 'block';
-            document.getElementById('requestForm').reset();
-            document.getElementById('userPhone').value = '+7';
-        }, function(error) {
-            alert('Ошибка отправки. Проверьте настройки EmailJS.');
-            console.error('EmailJS error:', error);
+        fetch("send.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: new URLSearchParams({
+                name: name,
+                phone: phone,
+                email: email,
+                message: message
+            })
+        })
+        .then(response => {
+            if (!response.ok) throw new Error("Ошибка отправки");
+            return response.text();
+        })
+        .then(data => {
+            confirmationMessage.style.display = "block";
+            form.reset();
+            setTimeout(() => confirmationMessage.style.display = "none", 5000);
+        })
+        .catch(error => {
+            confirmationMessage.style.display = "none";
+            alert("Ошибка при отправке. Попробуйте позже.");
         });
+    });
 });
 
 // Image Viewer functionality
